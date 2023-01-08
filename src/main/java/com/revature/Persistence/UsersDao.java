@@ -1,7 +1,6 @@
 package com.revature.Persistence;
 
 import com.revature.POJOs.TasksPojo;
-import com.revature.POJOs.TicketsPojo;
 import com.revature.POJOs.UsersPojo;
 import com.revature.exceptions.EmailNotFoundException;
 import com.revature.exceptions.PasswordIncorrectException;
@@ -13,7 +12,6 @@ import java.util.Set;
 
 public class UsersDao {
 
-    //DAOs need to implement CRUD(create, read, update, delete)
     private Connection connection;
     public UsersDao() {
         this.connection = ConnectionManager.getConnection();
@@ -32,7 +30,6 @@ public class UsersDao {
         try{
             PreparedStatement pstmt1 = connection.prepareStatement("select * from users");
             ResultSet r = pstmt1.executeQuery();
-//            String matchEmail = r.getString("email");
             if(r.next()) {
                 String matchEmail = r.getString("email");
                 if (matchEmail.equals(email)) {
@@ -52,8 +49,6 @@ public class UsersDao {
                         System.out.println("DEBUG - auto generated key: " + users.getUser_id() + " is user_id. Employee " +
                                 "successfully added. Please login again to access tasks.");
                     }
-//                    TasksDao td = new TasksDao();
-//                    td.create(new TasksPojo());
                 }
             }
         }catch (SQLException e) {
@@ -67,7 +62,6 @@ public class UsersDao {
             pstmt.setString(1, email);
 
             ResultSet rs = pstmt.executeQuery();
-            //should only give on result
             if(!rs.next()){
                 throw new EmailNotFoundException("Email was not found");
             }
@@ -154,7 +148,6 @@ public class UsersDao {
             pstmt.setString(1, email);
 
             ResultSet rs = pstmt.executeQuery();
-            //should only give on result
             if(!rs.next()){
                 throw new EmailNotFoundException("Email was not found");
             }
@@ -178,10 +171,6 @@ public class UsersDao {
         }
         return null;
     }
-
-//    if(user.getPassword().equals(password)) {
-//        return user;
-//    } throw new PasswordIncorrectException("Password is not correct");
     public Set<UsersPojo> getAllUsers() {
         Set<UsersPojo> results = new HashSet<>();
         String sql = "SELECT * FROM users ORDER BY user_id";

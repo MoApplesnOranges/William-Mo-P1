@@ -1,9 +1,6 @@
 package com.revature.Persistence;
 
-import com.revature.Main;
 import com.revature.POJOs.TasksPojo;
-import com.revature.POJOs.TicketsPojo;
-import com.revature.POJOs.UsersPojo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,22 +65,14 @@ public class TasksDao {
     }
     public Set<TasksPojo> viewPendingTicket(int userId) {
         Set<TasksPojo> results = new HashSet<>();
-        Set<TasksPojo> results1 = new HashSet<>();
         try{
             String sql = "SELECT * FROM tasks WHERE user_id = ?";
-            String sql2 = "SELECT * FROM p_tickets WHERE user_id = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            PreparedStatement pstmt1 = connection.prepareStatement(sql2);
             pstmt.setInt(1, userId);
-            pstmt1.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
-            ResultSet r = pstmt1.executeQuery();
             while(rs.next()) {
                 results.add(new TasksPojo(rs.getInt("task_id"), rs.getInt("amount"),
                         rs.getString("description"), rs.getString("status"), rs.getInt("user_id")));
-            } while(r.next()) {
-                results1.add(new TasksPojo(r.getInt("task_id"), r.getInt("amount"),
-                        r.getString("description"), r.getString("status"), r.getInt("user_id")));
             }
         } catch(SQLException e) {
             e.printStackTrace();

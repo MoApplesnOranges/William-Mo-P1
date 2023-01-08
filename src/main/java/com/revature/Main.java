@@ -2,22 +2,14 @@ package com.revature;
 
 import com.revature.POJOs.UsersPojo;
 import com.revature.Persistence.ConnectionManager;
-import com.revature.Persistence.GetEmployees;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
-
-import com.revature.POJOs.EmployeesPojo;
 import com.revature.Persistence.UsersDao;
 import com.revature.Service.UsersService;
 import com.revature.exceptions.EmailNotFoundException;
 import com.revature.exceptions.PasswordIncorrectException;
-//import net.mo.BillsClass;
+import io.javalin.Javalin;
 
+import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws EmailNotFoundException, PasswordIncorrectException {
@@ -28,17 +20,15 @@ public class Main {
 //        String JSON = mapper.writeValueAsString(BillClass);
 //        System.out.println(JSON);
 
-//        Javalin app = JavalinApp.getApp(8080);
+//        Javalin app = Javalin.create().start(8080);
+
         ConnectionManager.getConnection();
 
-        UsersDao usersDao = new UsersDao();
-        Set<UsersPojo> users = usersDao.getAllUsers();
-        for(UsersPojo u : users) {
-            System.out.println(u);
-        }
-
-
-
+//        UsersService user = new UsersService(new UsersDao());
+//        Set<UsersPojo> users = user.getAllUsers();
+//        for(UsersPojo u : users) {
+//            System.out.println(u);
+//        }
 
         System.out.println("Are you an employee or manager? If need to register, type 'register'.");
         Scanner sc = new Scanner(System.in);

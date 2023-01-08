@@ -12,8 +12,4 @@ public class EmployeeService {
     public void registerNewEmployee(EmployeesPojo employeesPojo) {
         dao.createNew(employeesPojo);
     }
-
-//    public Set<Employees> getAllEmployees() {
-//        return dao.getAllEmployees();
-//    }
 }

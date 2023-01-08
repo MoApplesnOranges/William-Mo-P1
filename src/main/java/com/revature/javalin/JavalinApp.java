@@ -43,9 +43,4 @@ public class JavalinApp {
 
         ctx.status(201);
     }
-
-//    public static void getAllEmployees(Context ctx) {
-//        Set<Employees> employees = employeeService.getAllEmployees();
-//
-//    }
 }
