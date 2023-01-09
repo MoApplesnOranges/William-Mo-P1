@@ -12,12 +12,12 @@
         version="2.5">
 
     <listener>
-        <listener-class>com.revature.servlet.DependencyLoaderListener</listener-class>
+        <listener-class>com.packages.servlet.DependencyLoaderListener</listener-class>
     </listener>
 
     <servlet>
         <servlet-name>pingServlet</servlet-name>
-        <servlet-class>com.revature.servlet.PingServlet</servlet-class>
+        <servlet-class>com.packages.servlet.PingServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>usersServlet</servlet-name>
-        <servlet-class>com.revature.servlet.UsersServlet</servlet-class>
+        <servlet-class>com.packages.servlet.UsersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
